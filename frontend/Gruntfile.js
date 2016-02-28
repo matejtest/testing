@@ -19,6 +19,7 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-ng-annotate');
   grunt.loadNpmTasks('grunt-html2js');
 
+
   /**
    * Load in our build configuration file.
    */
@@ -558,6 +559,7 @@ module.exports = function ( grunt ) {
    */
   grunt.renameTask( 'watch', 'delta' );
   grunt.registerTask( 'watch', [ 'build', 'karma:unit', 'delta' ] );
+  grunt.registerTask('heroku:production', 'clean less mincss uglify');
 
   /**
    * The default task is to build and compile.
