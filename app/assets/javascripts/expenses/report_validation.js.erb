@@ -1,0 +1,15 @@
+$(document).ready(function(){
+
+	$("#report_form").validate({
+
+		rules: {
+			week: {
+				required: true,
+				date: true
+			}
+		},
+		success: function(element){
+			element.addClass("valid");
+		}
+	});
+});

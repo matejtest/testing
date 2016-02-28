@@ -1,0 +1,6 @@
+<% if @user.errors.any? %>
+	alert('Error: <%="#{@user.errors.full_messages.to_sentence}"%>');
+<% else %>
+	$("#edit_user_modal").modal("hide");
+	$("#user_id_<%= @user.id %>").replaceWith("<%= j render(:partial => 'new_user_row', :object => @user) %>");
+<% end %>

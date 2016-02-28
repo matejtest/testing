@@ -1,0 +1,72 @@
+<%= javascript_include_tag "signup/signup_validation" %>
+
+<div class="container">
+
+<%= form_tag  signup_index_path(), :id => 'registration_form', :method => :post do %>
+	<div class="col-sm-8 col-lg-8 col-md-8 col-md-offset-4" style="padding-bottom: 30px;">
+	<br/><br/>
+		<div class="row">
+			<div class="col-md-6 form-group">
+				<%= label_tag(:first_name, "First Name") %>
+				<div class="input-group">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+					<%= text_field_tag(:first_name, @user.first_name, :class => 'form-control', :placeholder => 'First Name') %>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6 form-group">
+				<%= label_tag(:last_name, "Last Name") %>
+				<div class="input-group">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+					<%= text_field_tag(:last_name, @user.last_name, :class => "form-control", :placeholder => 'Last Name') %>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6 form-group">
+				<%= label_tag(:email, "Email") %>
+				<div class="input-group">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+					<%= text_field_tag(:email, @user.email, :class => 'form-control', :placeholder => 'user@isp.net') %>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6 form-group">
+				<%= label_tag(:password, "Password") %>
+				<div class="input-group">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+					<%= text_field_tag(:password, @user.password, :class => 'form-control', :placeholder => 'minimum length: 4 chars', :type => 'password') %>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6 form-group">
+				<%= label_tag(:password_confirmation, "Password Confirmation") %>
+				<div class="input-group">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+					<%= text_field_tag(:password_confirmation, @user.password_confirmation, :class => 'form-control', :placeholder => 'minimum length: 4 chars', :type => 'password') %>
+				</div>
+			</div>
+		</div>
+		<br/>
+
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<div class="text-center">
+						<%= button_tag( "Finish", :class => "btn btn-primary btn-sm" ) %>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+<% end %>
+
+</div>

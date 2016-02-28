@@ -1,0 +1,29 @@
+$(document).ready(function(){
+
+	$("#edit_expense_form").validate({
+
+		rules: {
+			description: {
+				required: true
+			},
+			amount: {
+				required: true,
+				number: true
+			},
+			date: {
+				required: true,
+				date: true
+			},
+			time: {
+				required: true,
+				time: true
+			},
+			comment: {
+				required: true
+			}
+		},
+		success: function(element){
+			element.addClass("valid");
+		}
+	});
+});

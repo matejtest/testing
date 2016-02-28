@@ -1,0 +1,38 @@
+
+<div class="container">
+	<div class="row">
+		<div class="col-sm-4 col-md-4 col-md-offset-4">
+			<div class="account-wall">
+				<form id="loginForm" novalidate name="loginForm" class="css-form form-signin">
+					<div class="row">
+						<p class="login-title text-center">Please enter your credentials</p>
+					</div>
+					<br/>
+					<div class="row">
+						<div class="col-sm-12 col-md-12">
+							<input type="email", name="email" ng-model="user.email" class="form-control" placeholder="Email" required autofocus />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12 col-md-12">
+							<p class="red-text" ng-show="loginForm.email.$error.required && loginForm.email.$dirty"><span>Email is required.</span></p>
+							<p class="red-text" ng-show="loginForm.email.$error.email && loginForm.email.$dirty"><span>Check email format.</span></p>
+						</div>
+					</div>
+					<br/>
+					<div class="row">
+						<div class="col-sm-12 col-md-12">
+							<input type="password" name="password" ng-model="user.password" class="form-control" placeholder="Password" required ng-minlength="4" ng-maxlength="8">
+						</div>
+						<div class="col-sm-12 col-md-12">
+							<p class="red-text" ng-show="loginForm.password.$error.required && loginForm.password.$dirty"><span>Password is required.</span></p>
+							<p class="red-text" ng-show="(loginForm.password.$error.minlength || loginForm.password.$error.maxlength) && loginForm.password.$dirty"><span>Password minimum length is 4 and maximum 8 chars.</span></p>
+						</div>
+					</div>
+					<br/>
+					<button ng-click="login(user)" class="btn btn-lg btn-primary btn-block">Log in</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

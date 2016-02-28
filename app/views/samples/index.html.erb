@@ -1,0 +1,14 @@
+
+<div class="container">
+	<h2>Samples</h2>
+	<br/><br/><br/>
+	<div class="col-md-12">
+		<% @samples.each do |s| %>
+			<div class="row">
+
+				<p><%= "#{s.name} #{s.city} #{s.state} #{s.country} #{s.price}" %></p>
+			</div>
+		<% end %>
+	</div>
+
+</div>

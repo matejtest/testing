@@ -1,0 +1,11 @@
+defaults: &defaults
+  report_file_name: 'report.pdf'
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

@@ -1,0 +1,29 @@
+$(document).ready(function(){
+
+	$("#registration_form").validate({
+
+		rules: {
+			first_name: { required: true},
+			last_name: { required: true},
+			email: {
+				required: true,
+				email: true
+			},
+			password: {
+				required: true,
+				minlength: 4
+			},
+			password_confirmation: {
+				required: true,
+				equalTo: "#password"
+			}
+		},
+		messages: {
+			password_confirmation: "Must match 'password' field."
+		},
+		success: function(element){
+			element.addClass("valid");
+		}
+	});
+
+});

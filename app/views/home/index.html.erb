@@ -1,0 +1,23 @@
+
+<div class="container">
+	<h2>Welcome!</h2>
+	<br/><br/><br/>
+	<div class="col-md-6">
+		<% if user_logged_in? %>
+			<div class="row">
+				<p><%= link_to 'Logout', '/logout', :class => "btn btn-warning" %></p>
+			</div>
+		<% else %>
+			<div class="row">
+				<p><%= link_to 'Login', new_session_path() %> if you are already a member</p>
+			</div>
+			<div class="row">
+				<p>or</p>
+			</div>
+			<div class="row">
+				<p><%= link_to 'create your account', new_signup_path() %> and start tracking your expenses!</p>
+			</div>
+		<% end %>
+	</div>
+
+</div>

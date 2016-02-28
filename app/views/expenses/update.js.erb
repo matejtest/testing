@@ -1,0 +1,6 @@
+<% if @expense.errors.any? %>
+	alert('Error: <%="#{@expense.errors.full_messages.to_sentence}"%>');
+<% else %>
+	$("#edit_expense_modal").modal("hide");
+	$("#expense_id_<%= @expense.id %>").replaceWith("<%= j render(:partial => 'new_expense_row', :object => @expense) %>");
+<% end %>

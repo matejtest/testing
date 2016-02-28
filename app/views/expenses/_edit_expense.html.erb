@@ -1,0 +1,58 @@
+
+<%= javascript_include_tag "expenses/edit_expense_datetime_pickers" %>
+<%= javascript_include_tag "expenses/edit_expense_validation" %>
+
+
+<div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-header edit_header">
+			<button id="close_edit_modal" type="button" class="close" data-dismiss="modal" data-target="edit_expense_modal">
+				<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+			</button>
+			<h4 class="modal-title">Edit expense</h4>
+		</div>
+		<div class="modal-body">
+			<%= form_tag user_expense_path(@user, @expense), :method => :put, :remote => true, :id => 'edit_expense_form', :class => 'form-signin' do %>
+
+			<div class="row">
+				<div class="col-lg-6 col-md-6">
+					<%= text_field_tag(:description, @expense.description, :class => 'form-control', :placeholder => 'Description', :required => true, :autofocus => true, :id => "edit_ex_description") %>
+				</div>
+				<div class="col-lg-6 col-md-6">
+					<%= text_field_tag(:amount, @expense.amount, :class => 'form-control', :placeholder => 'Amount', :required => true, :id => 'edit_ex_amount') %>
+				</div>
+			</div>
+			<br/>
+
+			<div class="row">
+				<div class="col-lg-6 col-md-6">
+					<%= text_field_tag(:date, @expense.date, :class => 'form-control datepicker', :placeholder => 'YYYY-MM-DD', :required => true, :id => 'datepicker_edit', :name => 'date' ) %>
+					<!-- <input type='text' class="form-control" id='datepicker' /> -->
+				</div>
+				<div class="col-lg-6 col-md-6">
+					<%= text_field_tag(:time, @expense.time.strftime("%H:%M"), :class => 'form-control datepicker', :placeholder => 'HH:mm', :required => true, :id => 'timepicker_edit', :name => 'time' ) %>
+					<!-- <input type='text' class="form-control" id='timepicker' /> -->
+				</div>
+			</div>
+			<br/>
+
+			<div class="row">
+				<div class="col-lg-6 col-mg-6">
+					<%= text_area_tag( :comment, @expense.comment, :rows => 4, :cols => 34, :placeholder => 'Comment', :id => "edit_ex_comment") %>
+				</div>
+			</div>
+			<br/><br/>
+
+			<div class="row">
+				<div class="col-lg-6 col-md-6 text-center">
+					<button id="close_edit_modal" type="button" class="btn btn-sm btn-danger" data-dismiss="modal" data-target="edit_expense_modal">Cancel</button>
+				</div>
+				<div class="col-lg-6 col-md-6 text-center">
+					<%= button_tag( "Update", :class => "btn btn-sm btn-primary" ) %>
+				</div>
+			</div>
+
+			<% end %>
+		</div>
+	</div>
+</div>

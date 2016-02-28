@@ -1,0 +1,67 @@
+== README
+
+Setting-up the app:
+-----------------------------
+
+Dependencies:
+	Ruby ver. 2.1.4
+	PostgreSQL
+
+1. Install RVM, Ruby (2.1.4), Bundler and PostgreSQL servers
+2. Run "bundle install"
+3. Run "rake db:migrate" #to create DB and schema
+4. Run "rake db:seed" #to seed data
+5. Run "rake users:admin_init" #to initialize admin account
+6. Boot the app by typing "unicorn" (or if you prefer rails' built-in WebBrick server, then run the app by typing "rails s")
+7. Open you browser and type "http://localhost:8080", if you're using Unicorn web server, or "http://localhost:3000" if you prefer WebBrick
+8. To login to app use credentials:
+	email: admin@isp.net
+	pass: root
+
+FrontEnd:
+---------
+1. sudo npm -g install grunt-cli karma bower
+2. npm install
+3. bower install
+4. grunt watch
+
+
+Testing:
+------------
+
+To run the tests do the following:
+	- run "rake db:test:prepare" #to create test db
+
+for RestAPI testing:
+
+	- run tests for each controller by typing:
+
+	"bundle exec rspec spec/api/expenses_controller_spec.rb" #for expenses controller
+	"bundle exec rspec spec/api/users_controller_spec.rb" #for users controller
+	"bundle exec rspec spec/api/sessions_controller_spec.rb" #for sessions controller
+
+for model testing:
+
+	- run tests for each model by typing:
+
+	"bundle exec rspec spec/models/user_spec.rb" #for user model
+	"bundle exec rspec spec/models/expense_spec.rb" #for expense model
+	and so on...
+
+for service testing:
+
+	-run tests for each service by typing:
+
+	"bundle exec rspec spec/services/expenses_filter_service_spec.rb"
+	and so on...
+
+for policy testing:
+
+	- run tests for each policy by typing:
+
+	"bundle exec rspec spec/policies/expense_policy_spec.rb"
+	and so on...
+
+
+
+You can find deployed version of the app on: http://tt-project.herokuapp.com

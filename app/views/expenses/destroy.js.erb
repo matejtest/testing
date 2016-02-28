@@ -1,0 +1,7 @@
+
+<% if @expense.errors.any? %>
+	alert('Error: <%="#{@expense.errors.full_messages.to_sentence}"%>');
+	return false;
+<% else %>
+	$("#expense_id_<%= @expense.id %>").remove();
+<% end %>

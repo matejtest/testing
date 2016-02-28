@@ -1,0 +1,18 @@
+
+<div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-header details_header">
+			<button id="close_modal" type="button" class="close" data-dismiss="modal" data-target="show_expense_modal">
+				<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+			</button>
+			<h4 class="modal-title">Expense details</h4>
+		</div>
+		<div class="modal-body">
+			<p>Description: <%= expense.description %></p>
+			<p>Amount: <%= expense.amount %></p>
+			<p>Date: <%= expense.date %></p>
+			<p>Time: <%= expense.time.strftime("%H:%M") %></p>
+			<p>Comment: <%= expense.comment %></p>
+		</div>
+	</div>
+</div>

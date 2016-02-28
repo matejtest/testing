@@ -1,0 +1,7 @@
+<% if @user.errors.any? %>
+	alert('Error: <%="#{@user.errors.full_messages.to_sentence}"%>');
+<% else %>
+	// alert("New user successfully added.");
+	$("#close_new_user").trigger("click");
+	$("#users_tbl_body").append("<%= j render(:partial => 'new_user_row', :object => @user) %>");
+<% end %>

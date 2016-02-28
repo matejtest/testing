@@ -1,0 +1,8 @@
+
+<% if @expense.errors.any? %>
+	alert('Error: <%="#{@expense.errors.full_messages.to_sentence}"%>');
+<% else %>
+	//alert("New expense successfully added.");
+	$("#close_new_expense").trigger("click");
+	$("#regular_user_expenses_tbl_body").append("<%= j render(:partial => 'new_expense_row', :object => @expense) %>");
+<% end %>

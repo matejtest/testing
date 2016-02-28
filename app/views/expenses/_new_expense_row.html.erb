@@ -1,0 +1,13 @@
+
+<tr id='expense_id_<%= "#{@expense.id}" %>'>
+	<td><%= @expense.description %></td>
+	<td><%= @expense.amount %></td>
+	<td><%= @expense.date %></td>
+	<td><%= @expense.time.strftime("%H:%M") %></td>
+	<td><%= truncate(@expense.comment, :length => 35, :separator => "") %></td>
+	<td>
+		<%= link_to "Show", user_expense_path(@expense.user_id, @expense), :method => :get, :remote => true, :class => "btn btn-success" %>
+		<%= link_to "Edit", edit_user_expense_path(@expense.user_id, @expense), :method => :get, :remote => true, :class => "btn btn-warning" %>
+		<%= link_to "Delete", user_expense_path(@expense.user_id, @expense), :method => :delete, :remote => true, :class => "btn btn-danger" %>
+	</td>
+</tr>

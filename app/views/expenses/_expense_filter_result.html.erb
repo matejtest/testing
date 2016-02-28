@@ -1,0 +1,15 @@
+
+<% filter_result.each do |fr| %>
+	<tr id='expense_id_<%= "#{fr.id}" %>'>
+		<td><%= fr.description %></td>
+		<td><%= fr.amount %></td>
+		<td><%= fr.date %></td>
+		<td><%= fr.time.strftime("%H:%M") %></td>
+		<td><%= truncate(fr.comment, :length => 35, :separator => "") %></td>
+		<td>
+			<%= link_to "Show", user_expense_path(fr.user_id, fr), :method => :get, :remote => true, :class => "btn btn-success" %>
+			<%= link_to "Edit", edit_user_expense_path(fr.user_id, fr), :remote => true, :class => "btn btn-warning" %>
+			<%= link_to "Delete", user_expense_path(fr.user_id, fr), :method => :delete, :remote => true, :class => "btn btn-danger" %>
+		</td>
+	</tr>
+<% end %>

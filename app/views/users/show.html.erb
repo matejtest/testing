@@ -1,0 +1,115 @@
+<%= javascript_include_tag "users/show" %>
+<%= javascript_include_tag "expenses/new_expense_validation" %>
+
+<div class="container">
+	<h4>Welcome <strong><%= "#{current_user.first_name} #{current_user.last_name}" %></strong>, you're logged in as <strong><%= current_user.role.name %></strong> user.</h4>
+	<hr>
+
+	<div class="row">
+		<ul class="nav nav-tabs">
+			<li class="active">
+			<a href="#expenses" data-toggle="tab">
+			<% if policy(current_user).is_admin? %>
+				<%= "#{@user.first_name}'s expenses" %>
+			<% else %>
+				My expenses
+			<% end %>
+			</a></li>
+
+			<% if policy(current_user).is_admin? %>
+				<li><a href="#users" data-toggle="tab">Users</a></li>
+			<% end %>
+		</ul>
+	</div>
+
+	<div class="tab-content">
+		<div class="tab-pane fade in active" id="expenses">
+			<br/>
+			<div class="row">
+				<div class="col-lg-4 col-md-4">
+					<a id='add_expense', class ='btn btn-primary' href="#">Add new expense</a>
+				</div>
+
+				<div class="col-lg-1 col-md-1">
+					<label for="filter">Filter by:</label>
+				</div>
+				<div class="col-lg-2 col-md-2">
+					<%= select_tag(:filter, options_for_select(Filter.all.map{|f| [f.name, f.id]}), :class => 'form-control'  ) %>
+					<%= hidden_field_tag :filter_url, filter_user_expenses_path(@user) %>
+				</div>
+
+				<div class="col-lg-2 col-md-2 col-md-offset-2 col-lg-offset-2">
+					<a id='report_btn', class ='btn btn-success' href="#">Report</a>
+				</div>
+			</div>
+			<br/>
+
+			<div class="row">
+				<div id="new_expense", style="display:none;" class="col-sm-4 col-lg-4 col-md-4">
+					<%= render :partial => 'expenses/new', :locals => { :user => @user } %>
+				</div>
+
+				<div id="report", style="display:none;" class="col-lg-4 col-md-4 col-md-offset-8 col-lg-offset-8">
+					<%= render :partial => 'expenses/report', :locals => { :user => @user } %>
+				</div>
+			</div>
+			<br/>
+
+			<div class="table-container">
+				<div class="col-md-12">
+					<table class="table table-striped" id="regular_user_expenses_table">
+						<thead>
+							<tr>
+								<th>Description</th>
+								<th>Amount</th>
+								<th>Date</th>
+								<th>Time</th>
+								<th>Comment</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody id="regular_user_expenses_tbl_body">
+							<% @expenses.each do |e| %>
+							<tr id='expense_id_<%= "#{e.id}" %>'>
+								<td><%= e.description %></td>
+								<td><%= e.amount %></td>
+								<td><%= e.date %></td>
+								<td><%= e.time.strftime("%H:%M") %></td>
+								<td><%= truncate(e.comment, :length => 35, :separator => "") %></td>
+								<td>
+									<%= link_to "Show", user_expense_path(@user, e), :method => :get, :remote => true, :class => "btn btn-success" %>
+									<%= link_to "Edit", edit_user_expense_path(@user, e), :method => :get, :remote => true, :class => "btn btn-warning" %>
+									<%= link_to "Delete", user_expense_path(@user,e), :method => :delete, :remote => true, :class => "btn btn-danger" %>
+								</td>
+							</tr>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+		<% if policy(current_user).is_admin? %>
+			<div class="tab-pane fade" id="users">
+				<br/>
+				<%= render :partial => 'admin_users', :locals => { :users => @users }%>
+			</div>
+		<% end %>
+
+	</div>
+</div>
+
+<div id="show_expense_modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+</div>
+
+<div id="edit_expense_modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+</div>
+
+<% if policy(current_user).is_admin? %>
+	<div id="show_user_modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+	</div>
+
+	<div id="edit_user_modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+	</div>
+<% end %>
+

@@ -1,0 +1,21 @@
+
+<%= javascript_include_tag "expenses/report_validation" %>
+
+<%= form_tag report_user_path(:id => user.id, :format => :pdf), :method => :get, :id => 'report_form', :class => 'form-signin' do %>
+	<div class="row">
+		<div class="col-lg-6 col-md-6 col-lg-offset-1 col-md-offset-1">
+			<label for="week">Select week:</label>
+			<%= text_field_tag(:week, params[:week], :class => 'form-control datepicker', :placeholder => 'YYYY-MM-DD', :required => true, :id => 'datepicker_week', :name => 'week' ) %>
+		</div>
+	</div>
+	<br/>
+
+	<div class="row">
+		<div class="col-lg-2 col-md-2  col-lg-offset-1 col-md-offset-1 text-center">
+			<a href="#" id="close_report", class="btn btn-sm btn-danger">Cancel</a>
+		</div>
+		<div class="col-lg-2 col-md-2 col-lg-offset-1 col-md-offset-1">
+			<%= button_tag("Print", :class => 'btn btn-sm btn-primary') %>
+		</div>
+	</div>
+<% end %>

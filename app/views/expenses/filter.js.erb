@@ -1,0 +1,5 @@
+<% if @filter_result.present? %>
+	$("#regular_user_expenses_tbl_body").html("<%= j render(:partial => 'expense_filter_result', :locals => { :filter_result => @filter_result }) %>");
+<% else %>
+	$("#regular_user_expenses_tbl_body").html("");
+<% end %>

@@ -1,0 +1,6 @@
+<% if @user.errors.any? %>
+	alert('Error: <%="#{@user.errors.full_messages.to_sentence}"%>');
+	return false;
+<% else %>
+	$("#user_id_<%= @user.id %>").remove();
+<% end %>

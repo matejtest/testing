@@ -1,0 +1,42 @@
+
+<%= form_tag user_expenses_path(user.id), :method => :post, :remote => true, :id => 'new_expense_form', :class => 'form-signin' do %>
+
+	<div class="row">
+		<div class="col-lg-6 col-md-6">
+			<%= text_field_tag(:description, params[:description], :class => 'form-control', :placeholder => 'Description', :required => true, :autofocus => true, :id => "new_ex_description") %>
+		</div>
+		<div class="col-lg-6 col-md-6">
+			<%= text_field_tag(:amount, params[:amount], :class => 'form-control', :placeholder => 'Amount', :required => true, :id => 'new_ex_amount') %>
+		</div>
+	</div>
+	<br/>
+
+	<div class="row">
+		<div class="col-lg-6 col-md-6">
+			<%= text_field_tag(:date, params[:date], :class => 'form-control', :placeholder => 'YYYY-MM-DD', :required => true, :id => 'datepicker', :name => 'date' ) %>
+			<!-- <input type='text' class="form-control" id='datepicker' /> -->
+		</div>
+		<div class="col-lg-6 col-md-6">
+			<%= text_field_tag(:time, params[:time], :class => 'form-control', :placeholder => 'HH:mm', :required => true, :id => 'timepicker', :name => 'time' ) %>
+			<!-- <input type='text' class="form-control" id='timepicker' /> -->
+		</div>
+	</div>
+	<br/>
+
+	<div class="row">
+		<div class="col-lg-6 col-mg-6">
+			<%= text_area_tag( :comment, nil, :rows => 4, :cols => 34, :placeholder => 'Comment', :id => "new_ex_comment") %>
+		</div>
+	</div>
+	<br/><br/>
+
+	<div class="row">
+		<div class="col-lg-6 col-md-6 text-center">
+			<a href="#" id="close_new_expense", class="btn btn-sm btn-danger">Cancel</a>
+		</div>
+		<div class="col-lg-6 col-md-6 text-center">
+			<%= button_tag( "Add", :class => "btn btn-sm btn-primary" ) %>
+		</div>
+	</div>
+
+<% end %>

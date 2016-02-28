@@ -1,0 +1,86 @@
+
+<%= javascript_include_tag "users/admin_users" %>
+<%= javascript_include_tag "users/new_user_validation" %>
+
+<div class="row">
+	<div class="col-lg-4 col-md-4">
+		<a id='add_user', class ='btn btn-primary' href="#">Add new user</a>
+	</div>
+</div>
+<br/>
+
+<div class="row">
+	<div id="new_user", style="display:none;" class="col-sm-4 col-lg-4 col-md-4">
+		<%= form_tag users_path(), :method => :post, :remote => true, :id => 'new_user_form', :style => "width: 500px;" do %>
+			<div class="row">
+				<div class="col-lg-6 col-md-6">
+					<%= text_field_tag(:first_name, params[:first_name], :class => 'form-control', :placeholder => 'First Name', :required => true, :autofocus => true, :id => "new_user_first_name") %>
+				</div>
+				<div class="col-lg-6 col-md-6">
+					<%= text_field_tag(:last_name, params[:last_name], :class => 'form-control', :placeholder => 'Last Name', :required => true, :id => 'new_user_last_name') %>
+				</div>
+			</div>
+			<br/>
+
+			<div class="row">
+				<div class="col-lg-6 col-md-6">
+					<%= text_field_tag(:email, params[:email], :class => 'form-control', :placeholder => 'user@isp.net', :required => true ) %>
+				</div>
+				<div class="col-lg-6 col-md-6">
+					<%= select_tag(:role_id, options_for_select(Role.all.map{|r| [r.name, r.id]}), :class => 'form-control' ) %>
+				</div>
+			</div>
+			<br/>
+
+			<div class="row">
+				<div class="col-lg-6 col-md-6">
+					<%= text_field_tag(:password, params[:password], :class => 'form-control', :placeholder => 'Password min. 4 chars', :type => 'password') %>
+				</div>
+				<div class="col-lg-6 col-md-6">
+					<%= text_field_tag(:password_confirmation, params[:password_confirmation], :class => 'form-control', :placeholder => 'Password again', :type => 'password') %>
+				</div>
+			</div>
+			<br/>
+			<div class="row">
+				<div class="col-lg-6 col-md-6 text-center">
+					<a href="#" id="close_new_user", class="btn btn-sm btn-danger">Cancel</a>
+				</div>
+				<div class="col-lg-6 col-md-6 text-center">
+					<%= button_tag( "Add", :class => "btn btn-sm btn-primary" ) %>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>
+<br/><br/>
+
+<div class="table-container">
+	<div class="col-md-12">
+		<table class="table table-striped" id="users_table">
+			<thead>
+				<tr>
+					<th>Email</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Role</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody id="users_tbl_body">
+				<% users.each do |u| %>
+				<tr id='user_id_<%= "#{u.id}" %>'>
+					<td><%= link_to u.email, user_path(u.id) %></td>
+					<td><%= u.first_name %></td>
+					<td><%= u.last_name %></td>
+					<td><%= u.role.name %></td>
+					<td>
+						<%= link_to "Details", user_details_user_path(u.id), :method => :get, :remote => true, :class => "btn btn-success" %>
+						<%= link_to "Edit", edit_user_path(u.id), :method => :get, :remote => true, :class => "btn btn-warning" %>
+						<%= link_to "Delete", user_path(u.id), :method => :delete, :remote => true, :class => "btn btn-danger" %>
+					</td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>

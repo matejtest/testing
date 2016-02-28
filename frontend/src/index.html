@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ExpenseTrackerApp">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title ng-bind="pageTitle"></title>
+
+		<!-- font awesome from BootstrapCDN -->
+		<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+		<!-- compiled CSS -->
+		<% styles.forEach( function ( file ) { %>
+			<link rel="stylesheet" type="text/css" href="<%= file %>" />
+		<% }); %>
+
+		<!-- compiled JavaScript -->
+		<% scripts.forEach( function ( file ) { %>
+	      <script type="text/javascript" src="<%= file %>"></script>
+		 <% }); %>
+	</head>
+
+	<body ng-controller="ApplicationController">
+	   <div id="container">
+     		<div id="header">
+     			<header class="header">
+					<nav class="navbar navbar-default">
+						<div class="container-fluid">
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+									<span class="sr-only">Toggle navigation</span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button>
+								<a class="navbar-brand" ui-sref="home">Home</a>
+							</div>
+
+							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+								<ul class="nav navbar-nav">
+									<li><a ui-sref="about">About<span class="sr-only"></span></a></li>
+									<li><a ui-sref="contact">Contact</a></li>
+								</ul>
+								<ul class="nav navbar-nav navbar-right">
+        							<li><a ui-sref="login" ng-hide="loggedIn">Login</a></li>
+					            <li role="separator" class="divider"></li>
+					            <li><a ui-sref="signup" ng-hide="loggedIn">Sign Up</a></li>
+					         </ul>
+							</div>
+						</div>
+					</nav>
+				</header>
+			</div>
+
+			<div id="flash_messages" class="modal-dialog" ng-show="showFlashMessage">
+				<div class="alert in">
+					<input type="button" ng-click="closeFlashMessages()" class="close" value="x"></input>
+					<p ng-bind="flashMessage"></p>
+				</div>
+			</div>
+
+			<div id="body" class="container" ui-view="">
+
+			</div>
+
+			<div id="footer">
+				<footer class="footer">
+					<div class="container">
+						<div class="footer-inner footer-custom text-center">
+							<p>Expense Tracker App - Angular 1.2 Prototype</p>
+						</div>
+					</div>
+				</footer>
+			</div>
+
+		</div>
+	</body>
+
+</html>

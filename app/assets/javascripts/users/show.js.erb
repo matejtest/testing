@@ -1,0 +1,76 @@
+$(document).ready(function(){
+
+	function clearNewExpenseFields(){
+		$("#new_ex_description").val("");
+		$("#new_ex_amount").val("");
+		$("#new_ex_comment").val("");
+		$("#datepicker").val("");
+		$("#timepicker").val("");
+
+		//removing jQuery validate error labels
+		$("#new_ex_description-error").remove();
+		$("#new_ex_amount-error").remove();
+		$("#new_ex_comment-error").remove();
+		$("#datepicker-error").remove();
+		$("#timepicker-error").remove();
+
+	};
+
+	$("#add_expense").on("click", function(){
+		$("#report").hide();
+		$("#new_expense").show();
+	});
+
+	$('#datepicker').datetimepicker({
+		format: "YYYY-MM-DD"
+	});
+
+	$("#timepicker").datetimepicker({
+		format: "HH:mm"
+	});
+
+	$("#datepicker_week").datetimepicker({
+		format: "YYYY-MM-DD"
+	});
+
+	$("#close_new_expense").on("click", function(){
+		clearNewExpenseFields();
+		$("#new_expense").hide();
+	});
+
+	$("#filter").on("change", function(){
+
+		$("#new_expense").hide();
+		$("#report").hide();
+
+		if ($("#filter").val() == ""){
+			return false;
+		}
+
+		$.ajax({
+			type: "GET",
+			url: $("#filter_url").val(),
+			data: { filter_id : $("#filter").val() },
+			dataType: "script"
+			// contentType: "application/x-www-form-urlencoded; charset=utf-8",
+			// processData: true
+		}).success(function(data, status, jqXHR){
+			//console.log("success: ", data);
+		}).error(function(jqXHR, status, errorThrown){
+			console.log("error: ", errorThrown);
+		});
+	});
+
+	$("#report_btn").on("click", function(){
+		$("#new_expense").hide();
+		$("#report").show();
+	});
+
+	$("#close_report").on("click", function(){
+		$("#datepicker_week").val("");
+		$("#datepicker_week-error").remove();
+		$("#report").hide();
+	});
+
+
+});

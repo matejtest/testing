@@ -1,0 +1,30 @@
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: expenses_tracker_app
+  pool: 5
+  host: localhost
+  username: test
+  port: 5432
+  password: test
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: expenses_tracker_app_test
+  pool: 5
+  host: localhost
+  username: test
+  port: 5432
+  password: test
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: expenses_tracker_app_prod
+  pool: 5
+  host: localhost
+  username: test
+  port: 5432
+  password: test

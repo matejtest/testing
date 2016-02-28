@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ExpensesTrackerApp</title>
+
+	<%= stylesheet_link_tag "//fonts.googleapis.com/css?family=Raleway:500,600,700,800,900,400,300", type: 'text/css' %>
+	<%= stylesheet_link_tag    'application', media: 'all' %>
+	<%= javascript_include_tag 'application' %>
+	<%= csrf_meta_tags %>
+</head>
+
+<body>
+
+	<div id="container">
+		<div id="header">
+			<%= render 'layouts/header' %>
+		</div>
+		<div id="body">
+			<%= render 'layouts/flash_messages' %>
+			<%= yield %>
+		</div>
+		<div id="footer">
+			<%= render 'layouts/footer' %>
+		</div>
+	</div>
+
+</body>
+</html>

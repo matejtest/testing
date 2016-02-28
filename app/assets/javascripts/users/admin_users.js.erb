@@ -1,0 +1,25 @@
+$(document).ready(function(){
+
+	function clearNewUserFields(){
+		$("#new_user_first_name").val("");
+		$("#new_user_last_name").val("");
+		$("#email").val("");
+		$("#password").val("");
+		$("#password_confirmation").val("");
+
+		$("#new_user_first_name-error").remove();
+		$("#new_user_last_name-error").remove();
+		$("#email-error").remove();
+		$("#password-error").remove();
+		$("#password_confirmation-error").remove();
+	};
+
+	$("#add_user").on("click", function(){
+		$("#new_user").show();
+	});
+
+	$("#close_new_user").on("click", function(){
+		clearNewUserFields();
+		$("#new_user").hide();
+	});
+});

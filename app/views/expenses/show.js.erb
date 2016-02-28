@@ -1,0 +1,3 @@
+
+$("#show_expense_modal").html("<%= j render(:partial => 'show_expense', :locals => { :user => @user, :expense => @expense } ) %>");
+$("#show_expense_modal").modal("show");
