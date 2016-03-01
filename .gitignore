@@ -25,11 +25,11 @@ capybara-*.html
 /.bundle
 /vendor/bundle
 /script
-/public/assets/*
+#/public/assets/*
 /public/uploads/*
-/public/images/*
+#/public/images/*
 public/sitemap*
-/public/system/*
+#/public/system/*
 /coverage/
 /spec/tmp/*
 .env
