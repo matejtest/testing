@@ -44,6 +44,7 @@ module ExpensesTrackerApp
 
 		config.action_controller.include_all_helpers = false
 		config.active_record.schema_format = :sql
+		config.assets.enabled = false
 
 	end
 end

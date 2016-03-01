@@ -5,9 +5,9 @@ development:
   database: expenses_tracker_app
   pool: 5
   host: localhost
-  username: jenkins
+  username: test
   port: 5432
-  password: 000000
+  password: test
 
 test:
   adapter: postgresql
@@ -15,9 +15,9 @@ test:
   database: expenses_tracker_app_test
   pool: 5
   host: localhost
-  username: jenkins
+  username: test
   port: 5432
-  password: 000000
+  password: test
 
 production:
   adapter: postgresql
@@ -25,6 +25,6 @@ production:
   database: expenses_tracker_app_prod
   pool: 5
   host: localhost
-  username: jenkins
+  username: test
   port: 5432
-  password: 000000
+  password: test
