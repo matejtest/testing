@@ -1,0 +1,31 @@
+<script>jwplayer.key="P5uSR9Y3PsHTeWQCXDRmBUj+k3m9ryZ8U2MJcw==";</script>
+
+
+<div class="container">
+	<h2>Images</h2>
+
+	<% @images.each_with_index do |img, index| %>
+	<div class="row">
+		<div class="col-sm-6 col-md-4 col-md-offset-4">
+			<p>Image<%="#{index+1}" %></p>
+			<p><%= image_tag(img.image.url(:small), :alt => img.image.url(:small)) %></p>
+		</div>
+	</div>
+	<% end %>
+
+	<h2>Player</h2>
+	<div class="row">
+		<div class="col-sm-6 col-md-4 col-md-offset-4">
+			<div id="myElement">Loading the player...</div>
+			<script type="text/javascript">
+				var playerInstance = jwplayer("myElement");
+				playerInstance.setup({
+					file: "https://www.youtube.com/watch?v=6oAqOFz6QsU",
+					width: 640,
+					height: 360
+				});
+			</script>
+
+		</div>
+	</div>
+</div>

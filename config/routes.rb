@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
 	resources :sessions, :only => [:new, :create]
 
+	resources :images, :only => [:index, :new, :create]
+
 	resources :users, :except => [:index, :new] do
 		resources :expenses, :except => [:index, :new] do
 			collection do

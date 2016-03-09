@@ -47,8 +47,11 @@ gem 'sinatra', :require => nil
 gem 'sidekiq'
 
 gem 'ci_reporter_rspec'
+
 # required by heroku
 gem 'rails_12factor', group: :production
+
+gem 'paperclip'
 
 group :production do
 	gem 'pg'

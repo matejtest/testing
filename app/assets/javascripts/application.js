@@ -17,3 +17,4 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require_tree ../../../vendor/assets/javascripts/jquery_validate
+//= require_tree ../../../vendor/assets/javascripts/jwplayer-7.3.4
