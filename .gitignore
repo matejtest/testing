@@ -51,3 +51,5 @@ frontend/build/
 frontend/bin/
 frontend/node_modules/
 frontend/vendor/
+
+passenger./*

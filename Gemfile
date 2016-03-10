@@ -32,7 +32,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
-gem 'unicorn'
+# gem 'unicorn'
 
 gem 'pundit'
 gem 'validates_formatting_of'
@@ -52,6 +52,8 @@ gem 'ci_reporter_rspec'
 gem 'rails_12factor', group: :production
 
 gem 'paperclip'
+
+gem "passenger", ">= 5.0.25", require: "phusion_passenger/rack_handler"
 
 group :production do
 	gem 'pg'
